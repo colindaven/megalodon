@@ -1,0 +1,444 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Advanced Megalodon Arguments &mdash; Megalodon 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Computing Considerations" href="computing_considerations.html" />
+    <link rel="prev" title="Common Arguments" href="common_arguments.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Megalodon
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="algorithm_details.html">Megalodon Algorithm Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common_arguments.html">Common Arguments</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Advanced Megalodon Arguments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#output-arguments">Output Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#snp-arguments">SNP Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#modified-base-arguments">Modified Base Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reference-output">Reference Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#miscellaneous-arguments">Miscellaneous Arguments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="computing_considerations.html">Computing Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variant_phasing.html">Variant Phasing</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Megalodon</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Advanced Megalodon Arguments</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/advanced_arguments.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="advanced-megalodon-arguments">
+<h1>Advanced Megalodon Arguments<a class="headerlink" href="#advanced-megalodon-arguments" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="output-arguments">
+<h2>Output Arguments<a class="headerlink" href="#output-arguments" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--basecalls-format</span></code></p>
+<ul>
+<li><p>Currently only FASTA format is supported, but the option is provided for potential future capacity for alternative formats.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--num-reads</span></code></p>
+<ul>
+<li><p>Number of reads to process. Intended for test runs on a subset.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--read-ids-filename</span></code></p>
+<ul>
+<li><p>A file containing <code class="docutils literal notranslate"><span class="pre">read_ids</span></code> to process (one per line).</p></li>
+<li><p>Used in the variant phasing pipeline.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="snp-arguments">
+<h2>SNP Arguments<a class="headerlink" href="#snp-arguments" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--disable-snp-calibration</span></code></p>
+<ul>
+<li><p>Use raw neural network SNP scores.</p></li>
+<li><p>This option should be set when calibrating a new model.</p></li>
+<li><p>Default: Calibrate scores as described in <code class="docutils literal notranslate"><span class="pre">--snp-calibration-filename</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--heterozygous-factors</span></code></p>
+<ul>
+<li><p>Bayes factor used when computing heterozygous probabilities in diploid variant calling mode.</p></li>
+<li><p>Two factors must be provided for single base subsititution variants and indels.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--max-indel-size</span></code></p>
+<ul>
+<li><p>Maximum indel size to include in testing. Default: 50</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--snp-all-paths</span></code></p>
+<ul>
+<li><p>Compute the forward algorithm all paths score.</p></li>
+<li><p>Default: Viterbi best-path score.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--snp-calibration-filename</span></code></p>
+<ul>
+<li><p>File containing emperical calibration for SNP scores.</p></li>
+<li><p>As created by megalodon/scripts/calibrate_snp_llr_scores.py.</p></li>
+<li><p>Default: Load default calibration file.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--variant-context-bases</span></code></p>
+<ul>
+<li><p>Context bases for single base SNP and indel calling. Default: [10, 30]</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--write-vcf-log-probs</span></code></p>
+<ul>
+<li><p>Write per-read alt log probabilities out in non-standard VCF field.</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">LOG_PROBS</span></code> field will contain semi-colon delimited log probabilities for each read at this site.</p></li>
+<li><p>For sites with multiple alternative alleles, per-read calls for each allele are separated by a comma as specified by the <code class="docutils literal notranslate"><span class="pre">A</span></code> genotype field type.</p>
+<ul>
+<li><p>The order is consistent within each allele so that per-read probabilities across all alleles can be reconstructed.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="modified-base-arguments">
+<h2>Modified Base Arguments<a class="headerlink" href="#modified-base-arguments" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--disable-mod-calibration</span></code></p>
+<ul>
+<li><p>Use raw modified base scores from the network.</p></li>
+<li><p>This option should be set when calibrating a new model.</p></li>
+<li><p>Default: Calibrate scores as described in <code class="docutils literal notranslate"><span class="pre">--mod-calibration-filename</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--mod-all-paths</span></code></p>
+<ul>
+<li><p>Compute forwards algorithm all paths score for modified base calls.</p></li>
+<li><p>Default: Viterbi best-path score.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--mod-binary-threshold</span></code></p>
+<ul>
+<li><p>Hard threshold for modified base aggregation (probability of modified/canonical base).</p>
+<ul>
+<li><p>Sites where no canonical or modified base acheives this level of confidence will be ignored in aggregation.</p></li>
+</ul>
+</li>
+<li><p>Default: 0.75</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--mod-calibration-filename</span></code></p>
+<ul>
+<li><p>File containing emperical calibration for modified base scores.</p></li>
+<li><p>As created by megalodon/scripts/calibrate_mod_llr_scores.py.</p></li>
+<li><p>Default: Load default calibration file.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--mod-context-bases</span></code></p>
+<ul>
+<li><p>Context bases for modified base calling.</p></li>
+<li><p>Default: 10</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--mod-output-formats</span></code></p>
+<ul>
+<li><p>Modified base aggregated output format(s).</p></li>
+<li><p>Default: <code class="docutils literal notranslate"><span class="pre">bedmethyl</span></code></p></li>
+<li><p>Options: <code class="docutils literal notranslate"><span class="pre">bedmethyl</span></code>, <code class="docutils literal notranslate"><span class="pre">modvcf</span></code>, <code class="docutils literal notranslate"><span class="pre">wiggle</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">bedmethyl</span></code> format produces one file per modification type.</p>
+<ul>
+<li><p>This format is specified by the <a class="reference external" href="https://www.encodeproject.org/data-standards/wgbs/">ENCODE consortium</a>.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">modvcf</span></code> is a slight variant to the VCF format used for sequence variant reporting.</p>
+<ul>
+<li><p>This format produces a single file containing all modifications.</p></li>
+<li><p>The format adds a <code class="docutils literal notranslate"><span class="pre">SN</span></code> info field as modified bases occur in a stranded manner unlike sequence variants (e.g. hemi-methylation).</p></li>
+<li><p>A genotype field <code class="docutils literal notranslate"><span class="pre">VALID_DP</span></code> indicates the number of reads included in the proportion modified calculation.</p></li>
+<li><p>Modified base proportion estimates are stored in genotype fields specified by the single letter modified base encodings (definied in the model file).</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--write-mod-log-probs</span></code></p>
+<ul>
+<li><p>Write per-read modified base log probabilities out in non-standard VCF field.</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">LOG_PROBS</span></code> field will contain semi-colon delimited log probabilities for modified base within each read at this site.</p></li>
+<li><p>For sites with multiple modified bases, per-read calls for each modification type are separated by a comma as specified by the <code class="docutils literal notranslate"><span class="pre">A</span></code> genotype field type.</p>
+<ul>
+<li><p>The order is consistent within each modification type so that per-read probabilities across all modification types can be reconstructed.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="reference-output">
+<h2>Reference Output<a class="headerlink" href="#reference-output" title="Permalink to this headline">¶</a></h2>
+<p>This output category is intended for use in generating reference sequences for taiyaki basecall model training.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--output-per-read-references</span></code></p>
+<ul>
+<li><p>Flag to trigger this output type (similar to adding an option to <code class="docutils literal notranslate"><span class="pre">--outputs</span></code>)</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--refs-include-mods</span></code></p>
+<ul>
+<li><p>Include modified base calls in per-read reference output.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--refs-include-snps</span></code></p>
+<ul>
+<li><p>Include SNP calls in per-read reference output.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--refs-percent-identity-threshold</span></code></p>
+<ul>
+<li><p>Only include reads with higher percent identity in per-read reference output.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--refs-percent-coverage-threshold</span></code></p>
+<ul>
+<li><p>Only include reads with higher read alignment coverage in per-read reference output.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--refs-length-range</span></code></p>
+<ul>
+<li><p>Only include reads with specified read length in per-read reference output.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="miscellaneous-arguments">
+<h2>Miscellaneous Arguments<a class="headerlink" href="#miscellaneous-arguments" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--database-safety</span></code></p>
+<ul>
+<li><p>Setting for database performance versus corruption protection.</p>
+<ul>
+<li><p>Options:</p>
+<ul>
+<li><p>0 (DB corruption on application crash)</p></li>
+<li><p>1 (Default; DB corruption on system crash)</p></li>
+<li><p>2 (DB safe mode)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--edge-buffer</span></code></p>
+<ul>
+<li><p>Do not process sequence variant or modified base calls near edge of read mapping.</p></li>
+<li><p>Default: 100</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--not-recursive</span></code></p>
+<ul>
+<li><p>Only search for fast5 read files directly found within the fast5 directory.</p></li>
+<li><p>Default: search recursively</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--suppress-progress</span></code></p>
+<ul>
+<li><p>Suppress progress bar output.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="computing_considerations.html" class="btn btn-neutral float-right" title="Computing Considerations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="common_arguments.html" class="btn btn-neutral float-left" title="Common Arguments" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Oxford Nanopore Technologies
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

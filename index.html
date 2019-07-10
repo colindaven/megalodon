@@ -1,0 +1,291 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Welcome to Megalodon’s documentation! &mdash; Megalodon 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Megalodon Algorithm Details" href="algorithm_details.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="#" class="icon icon-home"> Megalodon
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="algorithm_details.html">Megalodon Algorithm Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common_arguments.html">Common Arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced_arguments.html">Advanced Megalodon Arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="computing_considerations.html">Computing Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variant_phasing.html">Variant Phasing</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Megalodon</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>Welcome to Megalodon’s documentation!</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="welcome-to-megalodon-s-documentation">
+<h1>Welcome to Megalodon’s documentation!<a class="headerlink" href="#welcome-to-megalodon-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p>Megalodon provides “basecalling augmentation” for raw nanopore sequencing reads, including direct, reference-guided SNP and modified base calling.</p>
+<p>Megalodon anchors the information rich neural network basecalling output to a reference genome. Variants, either modified bases or alternative canonical bases, are then proposed and scored in order to produce highly-accurate reference anchored calls.</p>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>Megalodon requires <a class="reference external" href="https://github.com/nanoporetech/taiyaki">taiyaki</a> installation for basecalling backend.
+Megalodon requires only a minimal taiyaki installation via <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">git+git://github.com/nanoporetech/taiyaki.git</span></code>.
+Full installation (via <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">install</span></code>) is not necessary for megalodon functionality.</p>
+<p>Megalodon requires <a class="reference external" href="https://pytorch.org/">pytorch</a> to support the <code class="docutils literal notranslate"><span class="pre">taiyaki</span></code> basecalling backend.
+For megalodon GPU support, pytorch must be installed with GPU support (and <code class="docutils literal notranslate"><span class="pre">--devices</span></code> to use provided at run time).
+If pytorch is not installed before megalodon, pip will install the defualt pytorch (possibly CPU only).</p>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>Basic megalodon installation (python 3 support only)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">numpy</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="o">.</span><span class="n">oxfordnanolabs</span><span class="o">.</span><span class="n">local</span><span class="o">/</span><span class="n">algorithm</span><span class="o">/</span><span class="n">megalodon</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<div class="section" id="quick-start">
+<h3>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h3>
+<p>Megalodon is accessed via the command line interface, <code class="docutils literal notranslate"><span class="pre">megalodon</span></code> command.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># megalodon help (common args)</span>
+<span class="n">megalodon</span> <span class="o">-</span><span class="n">h</span>
+<span class="c1"># megalodon help (all args)</span>
+<span class="n">megalodon</span> <span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">long</span>
+
+<span class="c1"># Example command calling variants and CpG methylation</span>
+<span class="c1">#   Compute settings: GPU devices 0 and 1 with 8 CPU cores</span>
+<span class="n">megalodon</span> <span class="n">raw_fast5s</span><span class="o">/</span> \
+    <span class="o">--</span><span class="n">outputs</span> <span class="n">basecalls</span> <span class="n">mappings</span> <span class="n">snps</span> <span class="n">mods</span> \
+    <span class="o">--</span><span class="n">reference</span> <span class="n">reference</span><span class="o">.</span><span class="n">fa</span> <span class="o">--</span><span class="n">variant</span><span class="o">-</span><span class="n">filename</span> <span class="n">variants</span><span class="o">.</span><span class="n">vcf</span> \
+    <span class="o">--</span><span class="n">mod</span><span class="o">-</span><span class="n">motif</span> <span class="n">Z</span> <span class="n">CG</span> <span class="mi">0</span> <span class="o">--</span><span class="n">devices</span> <span class="mi">0</span> <span class="mi">1</span> <span class="o">--</span><span class="n">processes</span> <span class="mi">8</span> <span class="o">--</span><span class="n">verbose</span><span class="o">-</span><span class="n">read</span><span class="o">-</span><span class="n">progress</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>This command produces the <code class="docutils literal notranslate"><span class="pre">megalodon_results</span></code> output directory containing basecalls, mappings, SNP and modified base results.</p>
+<p>The majority of megalodon’s functionality is accessed via the <code class="docutils literal notranslate"><span class="pre">megalodon</span></code> command (exemplified above), though a small number of additional scripts are found in the <code class="docutils literal notranslate"><span class="pre">scripts</span></code> directory of the code repository.
+These include independent modified base or SNP aggregation (much faster than re-computing per-read calls), modified base result validation, and model statistic calibration.
+Helper scripts to perform sequence variant phasing (details here <a class="reference internal" href="variant_phasing.html"><span class="doc">Variant Phasing</span></a>) are also included in the <code class="docutils literal notranslate"><span class="pre">scripts</span></code> directory of the repository.</p>
+</div>
+</div>
+<div class="section" id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="algorithm_details.html">Megalodon Algorithm Details</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="algorithm_details.html#base-calling">Base Calling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithm_details.html#reference-anchoring">Reference Anchoring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithm_details.html#snp-calling">SNP Calling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithm_details.html#modified-base-calling">Modified Base Calling</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="common_arguments.html">Common Arguments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="common_arguments.html#required-argument">Required Argument</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common_arguments.html#model-argument">Model Argument</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common_arguments.html#output-arguments">Output Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common_arguments.html#mapping-arguments">Mapping Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common_arguments.html#sequence-variant-arguments">Sequence Variant Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common_arguments.html#modified-base-arguments">Modified Base Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common_arguments.html#taiyaki-chunk-arguments">Taiyaki Chunk Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common_arguments.html#miscellaneous-arguments">Miscellaneous Arguments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="advanced_arguments.html">Advanced Megalodon Arguments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="advanced_arguments.html#output-arguments">Output Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced_arguments.html#snp-arguments">SNP Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced_arguments.html#modified-base-arguments">Modified Base Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced_arguments.html#reference-output">Reference Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced_arguments.html#miscellaneous-arguments">Miscellaneous Arguments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="computing_considerations.html">Computing Considerations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="computing_considerations.html#raw-signal-loading">Raw Signal Loading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="computing_considerations.html#base-calling">Base Calling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="computing_considerations.html#reference-mapping">Reference Mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="computing_considerations.html#snp-and-modified-base-calling">SNP and Modified Base Calling</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="variant_phasing.html">Variant Phasing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="variant_phasing.html#workflow">Workflow</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="algorithm_details.html" class="btn btn-neutral float-right" title="Megalodon Algorithm Details" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Oxford Nanopore Technologies
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

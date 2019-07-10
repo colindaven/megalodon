@@ -1,0 +1,261 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Variant Phasing &mdash; Megalodon 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Computing Considerations" href="computing_considerations.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Megalodon
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="algorithm_details.html">Megalodon Algorithm Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common_arguments.html">Common Arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced_arguments.html">Advanced Megalodon Arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="computing_considerations.html">Computing Considerations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Variant Phasing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#workflow">Workflow</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Megalodon</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Variant Phasing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/variant_phasing.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="variant-phasing">
+<h1>Variant Phasing<a class="headerlink" href="#variant-phasing" title="Permalink to this headline">¶</a></h1>
+<p>This page walks through the steps to use megalodon in conjunction with <a class="reference external" href="https://whatshap.readthedocs.io/en/latest/">whatshap</a> to produce the highest quality phased variant calls.</p>
+<p>This workflow requires a working installation of whatshap. See instructions at the link above.</p>
+<div class="section" id="workflow">
+<h2>Workflow<a class="headerlink" href="#workflow" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># run megalodon to produce whatshap_mappings</span>
+<span class="n">megalodon</span> \
+    <span class="n">fast5s</span> <span class="o">--</span><span class="n">outputs</span> <span class="n">whatshap_mappings</span> <span class="o">--</span><span class="n">processes</span> <span class="mi">4</span> \
+    <span class="o">--</span><span class="n">reference</span> <span class="n">reference</span><span class="o">.</span><span class="n">fasta</span> <span class="o">--</span><span class="n">variant</span><span class="o">-</span><span class="n">filename</span> <span class="n">variants</span><span class="o">.</span><span class="n">vcf</span><span class="o">.</span><span class="n">gz</span> <span class="o">--</span><span class="n">overwrite</span>
+
+<span class="c1"># run whatshap with produced mappings and variants</span>
+<span class="n">samtools</span> <span class="n">index</span> <span class="n">megalodon_results</span><span class="o">/</span><span class="n">whatshap_mappings</span><span class="o">.</span><span class="n">sorted</span><span class="o">.</span><span class="n">bam</span>
+<span class="n">whatshap</span> \
+    <span class="n">phase</span> <span class="o">--</span><span class="n">indels</span> <span class="o">--</span><span class="n">distrust</span><span class="o">-</span><span class="n">genotypes</span> \
+    <span class="o">-</span><span class="n">o</span> <span class="n">megalodon_results</span><span class="o">/</span><span class="n">variants</span><span class="o">.</span><span class="n">phased</span><span class="o">.</span><span class="n">vcf</span> \
+    <span class="n">megalodon_results</span><span class="o">/</span><span class="n">variants</span><span class="o">.</span><span class="n">sorted</span><span class="o">.</span><span class="n">vcf</span><span class="o">.</span><span class="n">gz</span> \
+    <span class="n">megalodon_results</span><span class="o">/</span><span class="n">whatshap_mappings</span><span class="o">.</span><span class="n">sorted</span><span class="o">.</span><span class="n">bam</span>
+
+<span class="c1"># color reads against the phased variants</span>
+<span class="n">bgzip</span> <span class="n">megalodon_results</span><span class="o">/</span><span class="n">variants</span><span class="o">.</span><span class="n">phased</span><span class="o">.</span><span class="n">vcf</span>
+<span class="n">tabix</span> <span class="n">megalodon_results</span><span class="o">/</span><span class="n">variants</span><span class="o">.</span><span class="n">phased</span><span class="o">.</span><span class="n">vcf</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">whatshap</span> \
+    <span class="n">haplotag</span> <span class="n">megalodon_results</span><span class="o">/</span><span class="n">variants</span><span class="o">.</span><span class="n">phased</span><span class="o">.</span><span class="n">vcf</span><span class="o">.</span><span class="n">gz</span> \
+    <span class="n">megalodon_results</span><span class="o">/</span><span class="n">whatshap_mappings</span><span class="o">.</span><span class="n">sorted</span><span class="o">.</span><span class="n">bam</span> \
+    <span class="o">-</span><span class="n">o</span> <span class="n">megalodon_results</span><span class="o">/</span><span class="n">whatshap_mappings</span><span class="o">.</span><span class="n">haplotagged</span><span class="o">.</span><span class="n">bam</span>
+
+<span class="c1"># extract relevant reads and call haploid variants (more accurate)</span>
+<span class="n">python</span> \
+    <span class="n">megalodon</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">extract_haplotype_read_ids</span><span class="o">.</span><span class="n">py</span> \
+    <span class="n">megalodon_results</span><span class="o">/</span><span class="n">whatshap_mappings</span><span class="o">.</span><span class="n">haplotagged</span><span class="o">.</span><span class="n">bam</span> \
+    <span class="n">megalodon_results</span><span class="o">/</span><span class="n">whatshap_mappings</span><span class="o">.</span><span class="n">haploid_reads</span>
+<span class="n">python</span> \
+    <span class="n">megalodon</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">run_aggregation</span><span class="o">.</span><span class="n">py</span> \
+    <span class="o">--</span><span class="n">outputs</span> <span class="n">snps</span> <span class="o">--</span><span class="n">haploid</span> <span class="o">--</span><span class="n">output</span><span class="o">-</span><span class="n">suffix</span> <span class="n">haplotype_1</span> \
+    <span class="o">--</span><span class="n">read</span><span class="o">-</span><span class="n">ids</span><span class="o">-</span><span class="n">filename</span> <span class="n">megalodon_results</span><span class="o">/</span><span class="n">whatshap_mappings</span><span class="o">.</span><span class="n">haploid_reads</span><span class="o">.</span><span class="n">haplotype_1_read_ids</span><span class="o">.</span><span class="n">txt</span> \
+    <span class="o">--</span><span class="n">reference</span> <span class="n">reference</span><span class="o">.</span><span class="n">fasta</span>
+<span class="n">python</span> \
+    <span class="n">megalodon</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">run_aggregation</span><span class="o">.</span><span class="n">py</span> \
+    <span class="o">--</span><span class="n">outputs</span> <span class="n">snps</span> <span class="o">--</span><span class="n">haploid</span> <span class="o">--</span><span class="n">output</span><span class="o">-</span><span class="n">suffix</span> <span class="n">haplotype_2</span> \
+    <span class="o">--</span><span class="n">read</span><span class="o">-</span><span class="n">ids</span><span class="o">-</span><span class="n">filename</span> <span class="n">megalodon_results</span><span class="o">/</span><span class="n">whatshap_mappings</span><span class="o">.</span><span class="n">haploid_reads</span><span class="o">.</span><span class="n">haplotype_2_read_ids</span><span class="o">.</span><span class="n">txt</span> \
+    <span class="o">--</span><span class="n">reference</span> <span class="n">reference</span><span class="o">.</span><span class="n">fasta</span>
+
+<span class="c1"># merge haploid variants to produce diploid variants</span>
+<span class="n">python</span> \
+    <span class="n">megalodon</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">merge_haploid_variants</span><span class="o">.</span><span class="n">py</span> \
+    <span class="n">megalodon_results</span><span class="o">/</span><span class="n">variants</span><span class="o">.</span><span class="n">phased</span><span class="o">.</span><span class="n">vcf</span><span class="o">.</span><span class="n">gz</span> \
+    <span class="n">megalodon_results</span><span class="o">/</span><span class="n">variants</span><span class="o">.</span><span class="n">haplotype_1</span><span class="o">.</span><span class="n">sorted</span><span class="o">.</span><span class="n">vcf</span><span class="o">.</span><span class="n">gz</span> \
+    <span class="n">megalodon_results</span><span class="o">/</span><span class="n">variants</span><span class="o">.</span><span class="n">haplotype_2</span><span class="o">.</span><span class="n">sorted</span><span class="o">.</span><span class="n">vcf</span><span class="o">.</span><span class="n">gz</span> \
+    <span class="o">--</span><span class="n">out</span><span class="o">-</span><span class="n">vcf</span> <span class="n">megalodon_results</span><span class="o">/</span><span class="n">variants</span><span class="o">.</span><span class="n">haploid_merged</span><span class="o">.</span><span class="n">vcf</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="computing_considerations.html" class="btn btn-neutral float-left" title="Computing Considerations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Oxford Nanopore Technologies
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
